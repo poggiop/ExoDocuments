@@ -1,0 +1,47 @@
+﻿@model Business.PageModel
+
+<footer>
+    <script type="text/javascript">
+
+        
+
+        $(document).ready(function () {
+            $(".schemaSrc").each(function () {
+                var src = $(this).attr("src");
+                var id = $(this).attr('id');
+                $.ajax({
+                    type: "GET",
+                    url: src, // "http://itl-srv112.itl.local/ExoOrders/Orders.svc?xsd=xsd2",
+                    dataType: "xml",
+                    success: function (xml) {
+                        generateTable(main(xml, 0, {}), id);
+                    }
+                });
+            });
+        });
+
+        function xmlToString(xmlData) {
+
+            var xmlString;
+            //IE
+            if (window.ActiveXObject) {
+                xmlString = xmlData.xml;
+            }
+            // code for Mozilla, Firefox, Opera, etc.
+            else {
+                xmlString = (new XMLSerializer()).serializeToString(xmlData);
+            }
+            return xmlString;
+        }
+    </script>
+
+</footer>
+
+@{
+    ViewBag.Title = "DocView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@Model.Content
+

@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Documents", "Documents\Documents.csproj", "{28FEC37D-0DAA-4086-890A-4FBB15F87A1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{9D56DD1C-D893-4070-BE03-84CCFD7F7FFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Business.csproj", "{93872D97-BEFF-456F-A035-7605848E4F6A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helper", "Helper\Helper.csproj", "{D4DA4C0F-6BEF-433F-9A25-3C3FE7E55857}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{28FEC37D-0DAA-4086-890A-4FBB15F87A1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28FEC37D-0DAA-4086-890A-4FBB15F87A1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28FEC37D-0DAA-4086-890A-4FBB15F87A1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28FEC37D-0DAA-4086-890A-4FBB15F87A1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D56DD1C-D893-4070-BE03-84CCFD7F7FFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D56DD1C-D893-4070-BE03-84CCFD7F7FFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D56DD1C-D893-4070-BE03-84CCFD7F7FFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D56DD1C-D893-4070-BE03-84CCFD7F7FFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93872D97-BEFF-456F-A035-7605848E4F6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93872D97-BEFF-456F-A035-7605848E4F6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93872D97-BEFF-456F-A035-7605848E4F6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93872D97-BEFF-456F-A035-7605848E4F6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4DA4C0F-6BEF-433F-9A25-3C3FE7E55857}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4DA4C0F-6BEF-433F-9A25-3C3FE7E55857}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4DA4C0F-6BEF-433F-9A25-3C3FE7E55857}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4DA4C0F-6BEF-433F-9A25-3C3FE7E55857}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://131.2.101.37:8080/tfs/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Business\\Business.csproj
+		SccProjectName1 = Business
+		SccLocalPath1 = Business
+		SccProjectUniqueName2 = Documents\\Documents.csproj
+		SccProjectName2 = Documents
+		SccLocalPath2 = Documents
+		SccProjectUniqueName3 = Helper\\Helper.csproj
+		SccProjectName3 = Helper
+		SccLocalPath3 = Helper
+		SccProjectUniqueName4 = Services\\Services.csproj
+		SccProjectName4 = Services
+		SccLocalPath4 = Services
+	EndGlobalSection
+EndGlobal
