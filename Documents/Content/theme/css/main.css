@@ -3467,6 +3467,7 @@
 		-ms-flex-direction: row-reverse;
 		flex-direction: row-reverse;
 		min-height: 100vh;
+        margin-left:300px;
 	}
 
 /* Main */
