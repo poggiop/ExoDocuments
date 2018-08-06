@@ -64,7 +64,6 @@ namespace Documents.Controllers
 
             return View("Directory", model);
         }
-
         public ActionResult ViewDoc(string path)
         {
 
