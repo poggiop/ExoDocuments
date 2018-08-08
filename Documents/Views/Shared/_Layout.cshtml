@@ -12,12 +12,13 @@
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
 
-    <script src="~/Scripts/tableGenerator.js"></script> 
-    <script src="~/Scripts/XSDParser.js"></script>  
+    <script src="~/Scripts/tableGenerator.js"></script>
+    <script src="~/Scripts/XSDParser.js"></script>
 
 
     <link rel="icon" type="image/gif" href="~/Imagenes/exoLogistica.gif" />
     <link rel="shortcut icon" href="~/Imagenes/favicon.ico">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
     <!-- -------------------------------------------------------------------------------------------------------->
 
@@ -26,17 +27,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <style>
-        .dropdown-submenu {
-            position: relative;
-        }
 
-            .dropdown-submenu .dropdown-menu {
-                top: 0;
-                left: 100%;
-                margin-top: -1px;
-            }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
     <!-- -------------------------------------------------------------------------------------------------------->
 
 </head>
@@ -50,20 +42,31 @@
 
                 <!-- Header -->
                 <header id="header">
-                        <ul class="breadcrumb">
-                            <li><a href="/">Home</a></li>
-                            <li><a href="/Home/Directory?path=C:\Exologistica\CFS">CFC</a></li>
-                            <li><a href="/Home/Directory?path=C:\Exologistica\CFS\BillingItems">BillingItems</a></li>
-                            <li>BILLNGITEMS.MD</li>
-                        </ul>
-                        <ul class="icons">
-                            <li><a href="http://www.exo-logistica.com/" class="icon fas fa-home"><span class="label">Home</span></a></li>
-                            <li><a href="https://ar.linkedin.com/company/exologistica" class="icon fab fa-linkedin"><span class="label">Linkedin</span></a></li>
-                        </ul>
-                    </header>
+                    <ul class="breadcrumb">
+
+                        @*@if (ViewBag.path != null)
+                        {
+                            var path = "";
+                            foreach (var x in ViewBag.path as String[])
+                            {
+                                path += x + "\\";
+                                if (x != "C:")
+                                {
+                                    <li><a href="/Home/Directory?path=@path">@x</a></li>
+
+                                }
+                            }
+                        }*@
+                    </ul>
+                    <ul class="icons">
+                        <li><a href="http://www.exo-logistica.com/" class="icon fas fa-home"><span class="label">Home</span></a></li>
+                        <li><a href="https://ar.linkedin.com/company/exologistica" class="icon fab fa-linkedin"><span class="label">Linkedin</span></a></li>
+                        <li><a href="#" class="icon far fa-file"><span class="label">Pdf</span></a></li>
+                    </ul>
+                </header>
 
                 <!-- Banner -->
-                <section id="banner">   
+                <section id="banner">
                     <div class="content">
                         @RenderBody()
                     </div>
@@ -73,84 +76,97 @@
 
             </div>
         </div>
-        </div>
-        <div id="sidebar">
-            <div class="inner">
+    </div>
+    <div id="sidebar">
+        <div class="inner">
+            <!-- Menu -->
+            <nav id="menu">
+                <header class="major">
+                    <img src="~/Imagenes/exoLogistica.png" alt="" />
+                    <h2><a href="/" id="menuPrincipal">Menu</a></h2>
+                </header>
+                <!--<li><a href="/">Homepage</a></li>-->
+
+                <div class="col-md-6 opener">
+                    <ul id="tree">
 
 
-
-                <!-- Menu -->
-                <nav id="menu">
-                    <header class="major">
-                        <img src="~/Imagenes/exoLogistica.png" alt="" />
-                        <h2>Menu</h2>
-                    </header>
-                    <ul>
-                        <!--<li><a href="/">Homepage</a></li>-->
-
-                        <h2>@ViewBag.Title</h2>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <ul>
-                                    @foreach (var dir in Model.CurrentFolder.Childrens)
-                                    {
-                                        <li>
-                                            <a href="/Home/Directory?path=@dir.Path" class="opener">@dir.Name</a>
-                                        </li>   
-                                 
-                                    }
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <ul>
-                                    @foreach (var doc in Model.CurrentFolder.Documents)
-                                    {
-                                        <li><a href="/Home/ViewDoc?path=@doc.Path">@doc.Name</a></li>
-                                    }
-                                </ul>
-                            </div>
-                        </div>
-
-
-
-
-                       @* <li> Ejemplo de menu
-                                <span class="opener">Submenu</span>
-                                <ul>
-                                    <li><a href="#">Lorem Dolor</a></li>
-                                    <li><a href="#">Ipsum Adipiscing</a></li>
-                                    <li><a href="#">Tempus Magna</a></li>
-                                    <li><a href="#">Feugiat Veroeros</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Etiam Dolore</a></li>
-                            <li><a href="#">Adipiscing</a></li>
-                           *@
                     </ul>
-                    @*<div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown button
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </div>*@
-                </nav>
-
-
-            </div>
+                </div>
+            </nav>
 
 
         </div>
-    
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
-        @RenderSection("scripts", required: false)
 
-    
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+    <script>
+
+        var openFile = function (path) {
+
+            $(".content").html("<h1>Loading...</h1>");
+
+            $.ajax({
+                type: "GET",
+                url: "/Home/ViewDoc?path=" + path,
+                success: function (response) {
+                    $(".content").html(response);
+                },
+                error: function (request, error) {
+                    $(".content").html("<h1>No se encontro archivo</h1>");
+                },
+            });
+        }
+        
+
+        var clicked = function (path, containerId) {
+            if ($("#" + containerId).hasClass("opened")) {
+                $("#" + containerId).removeClass("opened");
+                $("#" + containerId).html("");
+            } else {
+
+                var value = $("#" + containerId);
+                var pa = value.parent();
+                var anchor = pa.find("a")[0]; 
+                $(".breadcrumb").append(anchor.text + " > ");
+                $("#" + containerId).addClass("opened");
+                a(path, containerId);
+
+            }
+        }
+
+        var a = function (path, containerId) {
+            $.ajax({
+                type: "GET",
+                url: "/Home/Test?path=" + path,
+                dataType: "json",
+                success: function (response) {
+                    $(response.Childrens).each(function (index, item) {
+                        var div = "<ul id='" + containerId + "-" + index + "' class='children'></ul>";
+                        $("#" + containerId).append("<li><a onClick=clicked('" + encodeURI(item.Path) + "','" + containerId + "-" + index + "') class='fas fa-angle-down'>" + item.Name + "</a>" + div + "</li>");
+
+                    });
+                    $(response.Documents).each(function (index, item) {
+                        $("#" + containerId).append("<li><a onClick=openFile('" + encodeURI(item.Path) + "') href='#'>" + item.Name + "</a></li>");
+                    });
+
+                }
+            });
+        };
+
+        a("C:\\Exologistica", "tree");
+    </script>
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+
+
+
 </body>
 </html>

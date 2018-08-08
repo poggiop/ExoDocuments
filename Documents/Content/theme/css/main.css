@@ -3596,7 +3596,7 @@
 	}
 
 		#sidebar h2 {
-			font-size: 1.38889em;
+			font-size: 2em;
 		}
 
 		#sidebar > .inner {
@@ -3961,6 +3961,12 @@
 		#footer .copyright a {
 			color: inherit;
 		}
+        
+    /* Breadcrumb */
+
+    .breadcrumb{
+        background-color: #fff !important;
+    }
 
 /* Menu */
 
@@ -3984,8 +3990,9 @@
 			color: inherit;
 			cursor: pointer;
 			display: block;
-			font-size: 0.9em;
+			font-size: 1.9em;
 			padding: 0.625em 0;
+            font-weight:600;
 		}
 
 			#menu ul a:hover, #menu ul span:hover {
@@ -4064,3 +4071,17 @@
 			margin-top: 0;
 			padding-top: 0;
 		}
+
+    #tree .children{
+    margin-left:20px;
+    font-size: 0.7em;
+    font-style:italic;
+    font-weight:100;
+    color:blue
+    }
+
+    #menuPrincipal{
+        border-bottom:0
+    }
+
+
