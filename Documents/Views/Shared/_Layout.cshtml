@@ -42,10 +42,10 @@
 
                 <!-- Header -->
                 <header id="header">
-                    <div class="breadcrumb">
-                    
+                    <p class="breadcrumb">
+                        Home /
 
-                    </div>
+                    </p>
 
                         @*@if (ViewBag.path != null)
                         {
@@ -115,7 +115,7 @@
                 type: "GET",
                 url: "/Home/ViewDoc?path=" + path,
                 success: function (response) {
-                    $(".content").html(response);
+                    var content = $(".content").html(response);
                 },
                 error: function (request, error) {
                     $(".content").html("<h1>No se encontro archivo</h1>");
@@ -126,13 +126,12 @@
 
         var clicked = function (path, containerId) {
             var container = $("#" + containerId);
+            $(".content").html("");
             if (container.hasClass("opened")) {
                 container.removeClass("opened");
-                container.html("");
-                if (container.siblings.hasClass("opened")) {
-                   
+                container.html("");   
                  $(".breadcrumb").html("");
-                }
+              
             } else {
                 var pa = container.parent();
                 var anchor = pa.find("a")[0]; 
@@ -141,6 +140,7 @@
                 openNode(path, containerId);
 
             }
+            
         }
    
 
@@ -157,7 +157,7 @@
 
                     });
                     $(response.Documents).each(function (index, item) {
-                        $("#" + containerId).append("<li><a onClick=openFile('" + encodeURI(item.Path) + "') href='#'>" + item.Name + "</a></li>");
+                        $("#" + containerId).append("<li><a onClick=openFile('" + encodeURI(item.Path) + "')>" + item.Name + "</a></li>");
                     });
 
                 }
