@@ -3482,7 +3482,8 @@
 		-webkit-flex-shrink: 1;
 		-ms-flex-shrink: 1;
 		flex-shrink: 1;
-		width: 100%;
+		width: 100;
+        background-color: #DCEFFE;
 	}
 
 		#main > .inner {
@@ -3734,6 +3735,7 @@
 					overflow-y: auto;
 					position: absolute;
 					top: 0;
+                    background-color: #DCEFFE;
 				}
 
 					#sidebar > .inner:after {
@@ -3965,7 +3967,7 @@
     /* Breadcrumb */
 
     .breadcrumb{
-        background-color: #fff !important;
+        background-color: #FF0046 !important;
     }
 
 /* Menu */
