@@ -87,8 +87,7 @@ namespace Documents.Controllers
             var mark = new Markdown();
             var file = System.IO.File.ReadAllText(path);
             var html = MarkDownHelper.Convert(file, "markdown", "html5");
-            var ads = MarkDownHelper.Convert(html, "html5", "txt");
-            Console.WriteLine("asd");
+                Console.WriteLine("asd");
 
             IHtmlString str = new HtmlString(html);
             return File(str.ToString(), "application/pdf", "DownloadName.pdf");

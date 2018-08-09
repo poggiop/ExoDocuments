@@ -42,7 +42,10 @@
 
                 <!-- Header -->
                 <header id="header">
-                    <ul class="breadcrumb">
+                    <div class="breadcrumb">
+                    
+
+                    </div>
 
                         @*@if (ViewBag.path != null)
                         {
@@ -122,22 +125,27 @@
         
 
         var clicked = function (path, containerId) {
-            if ($("#" + containerId).hasClass("opened")) {
-                $("#" + containerId).removeClass("opened");
-                $("#" + containerId).html("");
+            var container = $("#" + containerId);
+            if (container.hasClass("opened")) {
+                container.removeClass("opened");
+                container.html("");
+                if (container.siblings.hasClass("opened")) {
+                   
+                 $(".breadcrumb").html("");
+                }
             } else {
-
-                var value = $("#" + containerId);
-                var pa = value.parent();
+                var pa = container.parent();
                 var anchor = pa.find("a")[0]; 
-                $(".breadcrumb").append(anchor.text + " > ");
+                $(".breadcrumb").append(anchor.text + " / ");
                 $("#" + containerId).addClass("opened");
-                a(path, containerId);
+                openNode(path, containerId);
 
             }
         }
+   
 
-        var a = function (path, containerId) {
+
+        var openNode = function (path, containerId) {
             $.ajax({
                 type: "GET",
                 url: "/Home/Test?path=" + path,
@@ -156,7 +164,7 @@
             });
         };
 
-        a("C:\\Exologistica", "tree");
+        openNode("C:\\Exologistica", "tree");
     </script>
 
 
