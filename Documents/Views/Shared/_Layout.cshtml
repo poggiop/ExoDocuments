@@ -43,7 +43,7 @@
                 <!-- Header -->
                 <header id="header">
                     <p class="breadcrumb">
-                        Home /
+                        Home\
 
                     </p>
 
@@ -90,8 +90,8 @@
                 </header>
                 <!--<li><a href="/">Homepage</a></li>-->
 
-                <div class="col-md-6 opener">
-                    <ul id="tree">
+                <div>
+                    <ul id="tree" path="Home">
 
 
                     </ul>
@@ -123,19 +123,36 @@
             });
         }
         
+        var ROOT_PATH = "C:\\Exologistica";
+        var LOGIC_ROOT = 'Home';
+        var setBreadcrumb = function(path) {
+            $(".breadcrumb").html("");
+            $(".breadcrumb").text(path);
+        }
 
         var clicked = function (path, containerId) {
             var container = $("#" + containerId);
             $(".content").html("");
+
+
+            if (!container.hasClass("opened")) {
+                $(".breadcrumb").html("");
+            } else {
+                 var la = container.attr('path'); 
+                 $(".breadcrumb").append(la + " / ");
+            }
+            if (container.parent().siblings().find('ul').hasClass("opened")) {
+                container.parent().siblings().find('ul').removeClass("opened");
+                container.parent().siblings().find('ul').html("");
+            }
+
             if (container.hasClass("opened")) {
                 container.removeClass("opened");
-                container.html("");   
-                 $(".breadcrumb").html("");
-              
+                container.html("");
+                setBreadcrumb(container.parent().parent().attr('path').replace(ROOT_PATH, LOGIC_ROOT) + '\\');
             } else {
-                var pa = container.parent();
-                var anchor = pa.find("a")[0]; 
-                $(".breadcrumb").append(anchor.text + " / ");
+                var pa = container.attr('path').replace(ROOT_PATH, LOGIC_ROOT);
+                setBreadcrumb(pa + "\\");
                 $("#" + containerId).addClass("opened");
                 openNode(path, containerId);
 
@@ -152,7 +169,7 @@
                 dataType: "json",
                 success: function (response) {
                     $(response.Childrens).each(function (index, item) {
-                        var div = "<ul id='" + containerId + "-" + index + "' class='children'></ul>";
+                        var div = "<ul id='" + containerId + "-" + index + "' class='children' path='" + item.Path + "'></ul>";
                         $("#" + containerId).append("<li><a onClick=clicked('" + encodeURI(item.Path) + "','" + containerId + "-" + index + "') class='fas fa-angle-down'>" + item.Name + "</a>" + div + "</li>");
 
                     });
