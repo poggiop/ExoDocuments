@@ -3967,8 +3967,10 @@
     /* Breadcrumb */
 
     .breadcrumb{
-        background-color: #FF0046 !important;
+        background-color: #DCEFFE !important;
     }
+
+  
 
 /* Menu */
 
@@ -3989,7 +3991,7 @@
 
 		#menu ul a, #menu ul span {
 			border-bottom: 0;
-			color: #FF0046;
+			color: black;
 			cursor: pointer;
 			display: block;
 			font-size: 1.9em;

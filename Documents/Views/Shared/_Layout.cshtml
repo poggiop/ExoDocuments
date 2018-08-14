@@ -46,21 +46,6 @@
                         Home\
 
                     </p>
-
-                        @*@if (ViewBag.path != null)
-                        {
-                            var path = "";
-                            foreach (var x in ViewBag.path as String[])
-                            {
-                                path += x + "\\";
-                                if (x != "C:")
-                                {
-                                    <li><a href="/Home/Directory?path=@path">@x</a></li>
-
-                                }
-                            }
-                        }*@
-                    </ul>
                     <ul class="icons">
                         <li><a href="http://www.exo-logistica.com/" class="icon fas fa-home"><span class="label">Home</span></a></li>
                         <li><a href="https://ar.linkedin.com/company/exologistica" class="icon fab fa-linkedin"><span class="label">Linkedin</span></a></li>
@@ -122,7 +107,7 @@
                 },
             });
         }
-        
+
         var ROOT_PATH = "C:\\Exologistica";
         var LOGIC_ROOT = 'Home';
         var setBreadcrumb = function(path) {
@@ -134,13 +119,6 @@
             var container = $("#" + containerId);
             $(".content").html("");
 
-
-            if (!container.hasClass("opened")) {
-                $(".breadcrumb").html("");
-            } else {
-                 var la = container.attr('path'); 
-                 $(".breadcrumb").append(la + " / ");
-            }
             if (container.parent().siblings().find('ul').hasClass("opened")) {
                 container.parent().siblings().find('ul').removeClass("opened");
                 container.parent().siblings().find('ul').html("");
@@ -155,12 +133,15 @@
                 setBreadcrumb(pa + "\\");
                 $("#" + containerId).addClass("opened");
                 openNode(path, containerId);
-
             }
-            
-        }
-   
 
+            var $iconDiv = container.siblings().children(".iconClass");
+            if ($iconDiv.hasClass("fa-angle-right")) {
+                $iconDiv.addClass("fa-angle-down").removeClass("fa-angle-right");
+            } else {
+                $iconDiv.addClass("fa-angle-right").removeClass("fa-angle-down");
+            }
+        }
 
         var openNode = function (path, containerId) {
             $.ajax({
@@ -169,14 +150,13 @@
                 dataType: "json",
                 success: function (response) {
                     $(response.Childrens).each(function (index, item) {
-                        var div = "<ul id='" + containerId + "-" + index + "' class='children' path='" + item.Path + "'></ul>";
-                        $("#" + containerId).append("<li><a onClick=clicked('" + encodeURI(item.Path) + "','" + containerId + "-" + index + "') class='fas fa-angle-down'>" + item.Name + "</a>" + div + "</li>");
-
+                        var ul = "<ul id='" + containerId + "-" + index + "' class='children' path='" + item.Path + "'></ul>";
+                        $("#" + containerId).append("<li><a onClick=clicked('" + encodeURI(item.Path) + "','" + containerId + "-" + index + "')>" + item.Name + " " + "<div class ='fas fa-angle-right iconClass'> </div>" + "</a>" + ul + "</li>");
                     });
+
                     $(response.Documents).each(function (index, item) {
                         $("#" + containerId).append("<li><a onClick=openFile('" + encodeURI(item.Path) + "')>" + item.Name + "</a></li>");
                     });
-
                 }
             });
         };
@@ -185,7 +165,7 @@
     </script>
 
 
-
+    @*<script src="~/Content/theme/js/iconos.js"></script>*@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

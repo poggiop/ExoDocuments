@@ -178,6 +178,7 @@
     <Content Include="Content\theme\css\ie9.css" />
     <Content Include="Content\theme\css\main.css" />
     <Content Include="Content\theme\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\theme\js\iconos.js" />
     <Content Include="Content\theme\js\jquery.min.js" />
     <Content Include="Content\theme\js\main.js" />
     <Content Include="Content\theme\js\skel.min.js" />
