@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Web;
 using System.Web.Mvc;
 using HeyRed.MarkdownSharp;
 using System.IO;
@@ -9,6 +6,10 @@ using Business;
 using Services.Interface;
 using Helper;
 using System.Configuration;
+using System.Net.Mime;
+using iText.Html2pdf;
+using iText.Kernel.Pdf;
+using iText.Layout.Element;
 
 namespace Documents.Controllers
 {
@@ -27,26 +28,11 @@ namespace Documents.Controllers
         {
             var model = new PageModel();
 
-
             model.CurrentFolder = this._folderService.getCurrentFoler(ConfigurationManager.AppSettings["DocumentsPath"]);
-
-
-            if (model.CurrentFolder.MainDocument != null)
-            {
-                var mark = new Markdown();
-                var file = System.IO.File.ReadAllText(model.CurrentFolder.MainDocument.Path);
-                //var html = CommonMark.CommonMarkConverter.Convert(file);
-                var html = MarkDownHelper.Convert(file, "markdown", "html5");
-
-                IHtmlString str = new HtmlString(html);
-                var PageModel = new PageModel();
-                model.Content = str;
-            }
 
             return View("Directory", model);
         }
 
-        // GET: Prueba
         public ActionResult Test(string path)
         {
             if(!Path.HasExtension(path)){
@@ -56,8 +42,6 @@ namespace Documents.Controllers
             {
                 return Json("");
             }
-            
-            
         }
 
         public ActionResult Directory()
@@ -81,19 +65,29 @@ namespace Documents.Controllers
             return Content(str.ToString());
         }
 
-
-        public FileResult DownloadDoc(string path)
+        public FileResult DownloadPdf(string path)
         {
             var mark = new Markdown();
+
             var file = System.IO.File.ReadAllText(path);
-            var html = MarkDownHelper.Convert(file, "markdown", "html5");
-                Console.WriteLine("asd");
+            var content = MarkDownHelper.Convert(file, "markdown", "html5");
 
-            IHtmlString str = new HtmlString(html);
-            return File(str.ToString(), "application/pdf", "DownloadName.pdf");
-            ;
+            byte[] res = null;
+            using (var stream = new MemoryStream())
+            {
+                var writer = new PdfWriter(stream);
+                var pdf = new PdfDocument(writer);
+                var document = new iText.Layout.Document(pdf);
+
+                document.Add(new Paragraph(content));
+
+                HtmlConverter.ConvertToPdf(content, writer);
+
+                res = stream.ToArray();
+            }
+
+            return File(res, MediaTypeNames.Application.Pdf, Path.GetFileNameWithoutExtension(path) +".pdf");
         }
-
 
         public ActionResult About()
         {
