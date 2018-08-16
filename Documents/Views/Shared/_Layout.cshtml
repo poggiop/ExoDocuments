@@ -30,7 +30,6 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
     <!-- -------------------------------------------------------------------------------------------------------->
-
 </head>
 <body>
     <!-- Wrapper -->
@@ -39,6 +38,10 @@
         <!-- Main -->
         <div id="main">
             <div class="inner">
+                 @*<div class="scrollbar" id="style-4">
+      <div class="force-overflow"></div>
+    </div>*@
+
 
                 <!-- Header -->
                 <header id="header">
@@ -47,10 +50,13 @@
 
                     </p>
                     <ul class="icons">
-                        <li><a href="http://www.exo-logistica.com/" class="icon fas fa-home"><span class="label">Home</span></a></li>
-                        <li><a href="https://ar.linkedin.com/company/exologistica" class="icon fab fa-linkedin"><span class="label">Linkedin</span></a></li>
-                        <li><a id="exportToPdf" class="icon fas fa-file-pdf"><span class="label">Pdf</span></a></li>
-                        <li><a id="copyUrl" class="icon fas fa-copy"><span class="label">Copy</span></a></li>
+                        <li><a href="http://www.exo-logistica.com/"><img src="~/Imagenes/home.png" class="iconStyle" /></a></li>
+                        <li><a href="https://ar.linkedin.com/company/exologistica"><img src="~/Imagenes/linkedin.png" class="iconStyle" /></a></li>
+                        <li><a href="http://www.outlook.com" target="_blank" ><img src="~/Imagenes/gmail1.png" class="iconStyle" /></a></li>
+                        <li><a href="http://www.gmail.com" target="_blank"><img src="~/Imagenes/outlook.png" class="iconStyle" /></a></li>
+                        <li><a id="exportToPdf"><img src="~/Imagenes/pdf.png" class="iconStyle" /></a></li>
+                        <li><a id="copyUrl"><img src="~/Imagenes/copy.png" class="iconStyle" /></a></li>
+                       
                     </ul>
                 </header>
 
@@ -98,12 +104,18 @@
             });
 
             $('#exportToPdf').click(function () { downloadPdf(path) });
-            $('#copyUrl').click(function() { urlCopy(path)})
+            $('#copyUrl').click(function () { urlCopy(path) });
+           
+            
         }
 
         var downloadPdf = function (path) {
+            window.open(window.location.href + "Home/ViewDoc?path=" + path); // Darle una vuelta de rosca
             window.location = "/Home/DownloadPdf?path=" + path;
         }
+         
+        
+
 
         var urlCopy = function (path) {
             var url = window.location.href + "Home/ViewDoc?path=" + path;
@@ -122,6 +134,8 @@
             document.body.removeChild(el);
             
         }
+
+        
 
 
 
@@ -191,3 +205,4 @@
 
 </body>
 </html>
+

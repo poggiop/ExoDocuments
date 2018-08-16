@@ -239,7 +239,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Imagenes\copy.png" />
     <Content Include="Imagenes\exoLogistica.jpeg" />
+    <Content Include="Imagenes\gmail.png" />
+    <Content Include="Imagenes\gmail1.png" />
+    <Content Include="Imagenes\gmail2.png" />
+    <Content Include="Imagenes\Gmail_29991.ico" />
+    <Content Include="Imagenes\home.png" />
+    <Content Include="Imagenes\linkedin.png" />
+    <Content Include="Imagenes\outlook.png" />
+    <Content Include="Imagenes\pdf.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">

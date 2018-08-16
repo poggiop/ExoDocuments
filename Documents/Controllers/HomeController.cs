@@ -17,8 +17,6 @@ namespace Documents.Controllers
     {
         private IFolderService _folderService;
 
-        public HomeController() { }
-
         public HomeController(IFolderService folder)
         {
             this._folderService = folder;
