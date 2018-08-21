@@ -52,7 +52,7 @@
                         <li><a href="https://ar.linkedin.com/company/exologistica" target="_blank"><img src="~/Imagenes/linkedin.png" class="iconStyle" /></a></li>
                         <li><a href="http://www.gmail.com" target="_blank" ><img src="~/Imagenes/gmail1.png" class="iconStyle" /></a></li>
                         <li><a href="http://www.outlook.com" target="_blank"><img src="~/Imagenes/outlook.png" class="iconStyle" /></a></li>
-                        <li><a id="exportToPdf"><img src="~/Imagenes/pdf.png" class="iconStyle not-active" /></a></li>
+                        <li><a id="exportToPdf"><img src="~/Imagenes/pdf.png" class="iconStyle" /></a></li>
                         <li><a id="copyUrl"><img src="~/Imagenes/copy.png" class="iconStyle" /></a></li>
                        
                     </ul>
@@ -61,6 +61,7 @@
                 <!-- Banner -->
                 <section id="banner">
                     <div class="content">
+                        <h1>Bienvenido</h1>
                         @RenderBody()
                     </div>
                 </section>
@@ -108,7 +109,7 @@
         }
 
         var downloadPdf = function (path) {
-            window.open(window.location.href + "Home/ViewDoc?path=" + path); // Darle una vuelta de rosca
+            //window.open(window.location.href + "Home/ViewDoc?path=" + path); // Darle una vuelta de rosca
             window.location = "/Home/DownloadPdf?path=" + path;
         }
          
@@ -152,7 +153,7 @@
 
         var clicked = function (path, containerId) {
             var container = $("#" + containerId);
-            $(".content").html("");
+            $(".content").html("<h1> Bienvenido </h1");
 
             if (container.parent().siblings().find('ul').hasClass("opened")) {
                 container.parent().siblings().find('ul').removeClass("opened");
@@ -179,6 +180,7 @@
         }
 
         var openNode = function (path, containerId) {
+
             $.ajax({
                 type: "GET",
                 url: "/Home/Test?path=" + path,
