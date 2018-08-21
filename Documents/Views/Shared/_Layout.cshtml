@@ -15,9 +15,7 @@
     <script src="~/Scripts/tableGenerator.js"></script>
     <script src="~/Scripts/XSDParser.js"></script>
 
-
-    <link rel="icon" type="image/gif" href="~/Imagenes/exoLogistica.gif" />
-    <link rel="shortcut icon" href="~/Imagenes/favicon.ico">
+    <link rel="shortcut icon" href="~/Imagenes/exoLogo.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
     <!-- -------------------------------------------------------------------------------------------------------->
@@ -50,11 +48,11 @@
 
                     </p>
                     <ul class="icons">
-                        <li><a href="http://www.exo-logistica.com/"><img src="~/Imagenes/home.png" class="iconStyle" /></a></li>
-                        <li><a href="https://ar.linkedin.com/company/exologistica"><img src="~/Imagenes/linkedin.png" class="iconStyle" /></a></li>
-                        <li><a href="http://www.outlook.com" target="_blank" ><img src="~/Imagenes/gmail1.png" class="iconStyle" /></a></li>
-                        <li><a href="http://www.gmail.com" target="_blank"><img src="~/Imagenes/outlook.png" class="iconStyle" /></a></li>
-                        <li><a id="exportToPdf"><img src="~/Imagenes/pdf.png" class="iconStyle" /></a></li>
+                        <li><a href="http://www.exo-logistica.com/" target="_blank"><img src="~/Imagenes/home.png" class="iconStyle" /></a></li>
+                        <li><a href="https://ar.linkedin.com/company/exologistica" target="_blank"><img src="~/Imagenes/linkedin.png" class="iconStyle" /></a></li>
+                        <li><a href="http://www.gmail.com" target="_blank" ><img src="~/Imagenes/gmail1.png" class="iconStyle" /></a></li>
+                        <li><a href="http://www.outlook.com" target="_blank"><img src="~/Imagenes/outlook.png" class="iconStyle" /></a></li>
+                        <li><a id="exportToPdf"><img src="~/Imagenes/pdf.png" class="iconStyle not-active" /></a></li>
                         <li><a id="copyUrl"><img src="~/Imagenes/copy.png" class="iconStyle" /></a></li>
                        
                     </ul>
@@ -118,6 +116,9 @@
 
 
         var urlCopy = function (path) {
+
+            
+
             var url = window.location.href + "Home/ViewDoc?path=" + path;
             var el = document.createElement('textarea');
             // Set value (string to be copied)
@@ -132,6 +133,8 @@
             document.execCommand('copy');
             // Remove temporary element
             document.body.removeChild(el);
+
+            alert("Copy in Clipboard");
             
         }
 
@@ -206,3 +209,24 @@
 </body>
 </html>
 
+<style>
+    /* width */
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background-image:url("../../Imagenes/escheresque.png");
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background-image:url("../../Imagenes/green_gobbler.png");
+    }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+</style>
