@@ -36,11 +36,6 @@
         <!-- Main -->
         <div id="main">
             <div class="inner">
-                 @*<div class="scrollbar" id="style-4">
-      <div class="force-overflow"></div>
-    </div>*@
-
-
                 <!-- Header -->
                 <header id="header">
                     <p class="breadcrumb">
@@ -61,7 +56,7 @@
                 <!-- Banner -->
                 <section id="banner">
                     <div class="content">
-                        <h1>Welcome to Exologistica, select any archive</h1>
+                        <h1>Welcome to Exologistica, select any file</h1>
                         @RenderBody()
                     </div>
                 </section>
@@ -111,7 +106,6 @@
         }
 
         var downloadPdf = function (path) {
-            //window.open(window.location.href + "Home/ViewDoc?path=" + path); // Darle una vuelta de rosca
             window.location = "/Home/DownloadPdf?path=" + path;
         }
          
@@ -146,11 +140,9 @@
                 var nombres = $('#tree > li a').each(function (index) {
                 });
                 var buscando = $(this).val();
-                //console.log(buscando);
                 var item = '';
                 for (var i = 0; i < nombres.length; i++) {
                     item = $(nombres[i]).text().toLowerCase();
-                    console.log(item);
                     for (var x = 0; x < item.length; x++) {
                         if (buscando.length == 0 || item.indexOf(buscando) > -1) {
                             $(nombres[i]).parent().show();
