@@ -4112,6 +4112,12 @@
         color: black;
     }
 
+    #buscador {
+        border: 2px solid blue;
+        border-radius: 4px;
+        padding:5px 40px;
+    }
+
 
 
 
